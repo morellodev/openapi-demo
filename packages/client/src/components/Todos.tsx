@@ -3,7 +3,10 @@ import { match } from "ts-pattern";
 import { TodoList } from "./TodoList";
 
 export const Todos: React.FC = () => {
-  const todos = useGetTodos();
+  const todos = useGetTodos({
+    _sort: ["completed", "id"],
+    _order: ["asc", "desc"],
+  });
 
   return match(todos)
     .with({ status: "loading" }, () => <p>Loading...</p>)

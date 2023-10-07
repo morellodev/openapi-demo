@@ -3,7 +3,7 @@ import { isObject } from "./utils";
 interface RequestConfig {
   url: string;
   method: "get" | "put" | "patch" | "post" | "delete";
-  params?: Record<string, string>;
+  params?: Record<string, string | string[]>;
   headers?: Record<string, string>;
   data?: unknown;
   signal?: AbortSignal;
@@ -13,7 +13,7 @@ export const customInstance = async <T>(config: RequestConfig): Promise<T> => {
   const url = new URL(config.url, "http://localhost:3000");
   if (config.params) {
     Object.entries(config.params).forEach(([key, value]) => {
-      url.searchParams.append(key, value);
+      url.searchParams.append(key, value.toString());
     });
   }
 

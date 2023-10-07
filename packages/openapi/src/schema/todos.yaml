@@ -13,6 +13,9 @@ paths:
       tags:
         - Todos
       operationId: getTodos
+      parameters:
+        - $ref: "#/components/parameters/sortTodosBy"
+        - $ref: "#/components/parameters/sortDirection"
       responses:
         200:
           description: Successful response
@@ -133,6 +136,30 @@ components:
         type: integer
         format: int32
         example: 1
+    sortTodosBy:
+      name: _sort
+      in: query
+      description: Sort todos by field
+      schema:
+        anyOf:
+          - type: string
+            enum:
+              - id
+              - title
+              - completed
+          - type: array
+            items:
+              type: string
+              enum:
+                - id
+                - title
+                - completed
+    sortDirection:
+      name: _order
+      in: query
+      description: Sort direction
+      schema:
+        $ref: "#/components/schemas/SortDirection"
 
   responses:
     NotFound:
@@ -143,6 +170,18 @@ components:
             $ref: "#/components/schemas/Empty"
 
   schemas:
+    SortDirection:
+      anyOf:
+        - type: string
+          enum:
+            - asc
+            - desc
+        - type: array
+          items:
+            type: string
+            enum:
+              - asc
+              - desc
     Empty:
       type: object
     Todo:
