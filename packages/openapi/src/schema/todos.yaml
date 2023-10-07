@@ -48,7 +48,7 @@ paths:
                 - title
                 - completed
       responses:
-        200:
+        201:
           description: Successful response
           content:
             application/json:
@@ -70,7 +70,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Todo"
         404:
-          description: Todo not found
+          description: Not found
           content:
             application/json:
               schema:
@@ -104,6 +104,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Todo"
         404:
+          description: Not found
           $ref: "#/components/responses/NotFound"
 
     delete:
@@ -120,6 +121,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/Empty"
         404:
+          description: Not found
           $ref: "#/components/responses/NotFound"
 
 tags:
