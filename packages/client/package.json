@@ -13,6 +13,7 @@
     "@app/mocks": "workspace:^",
     "@app/openapi": "workspace:^",
     "@tanstack/react-query": "^4.35.3",
+    "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-pattern": "^5.0.5"
