@@ -1,0 +1,17 @@
+{
+  "name": "@app/mocks",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./browser": "./src/browser.ts"
+  },
+  "scripts": {
+    "build": "orval --config orval.config.ts",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@app/openapi": "workspace:^",
+    "msw": "^1.3.1"
+  }
+}

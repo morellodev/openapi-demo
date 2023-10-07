@@ -1,0 +1,21 @@
+{
+  "name": "openapi-demo",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgMagenta.bold\" \"pnpm --filter @app/server dev\" \"pnpm --filter @app/client dev\"",
+    "build": "pnpm --filter @app/client build",
+    "postinstall": "pnpm --filter @app/openapi build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "concurrently": "^8.2.1",
+    "eslint": "^8.51.0",
+    "typescript": "^5.0.2"
+  },
+  "msw": {
+    "workerDirectory": "packages/client/public"
+  }
+}

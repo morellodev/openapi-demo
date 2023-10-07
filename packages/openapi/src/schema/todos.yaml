@@ -1,0 +1,165 @@
+openapi: 3.0.2
+info:
+  title: Todos API
+  version: "1.0"
+
+servers:
+  - url: http://localhost:3000
+    description: Local JSON Server
+
+paths:
+  /todos:
+    get:
+      tags:
+        - Todos
+      operationId: getTodos
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Todo"
+
+    post:
+      tags:
+        - Todos
+      operationId: createTodo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Todo title
+                  example: Buy milk
+                completed:
+                  type: boolean
+                  description: Todo status
+                  example: false
+              required:
+                - title
+                - completed
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todo"
+
+  /todos/{id}:
+    get:
+      tags:
+        - Todos
+      operationId: getTodo
+      parameters:
+        - $ref: "#/components/parameters/todoId"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todo"
+        404:
+          description: Todo not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+
+    patch:
+      tags:
+        - Todos
+      operationId: updateTodo
+      parameters:
+        - $ref: "#/components/parameters/todoId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Todo title
+                  example: Buy milk
+                completed:
+                  type: boolean
+                  description: Todo status
+                  example: false
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todo"
+        404:
+          $ref: "#/components/responses/NotFound"
+
+    delete:
+      tags:
+        - Todos
+      operationId: deleteTodo
+      parameters:
+        - $ref: "#/components/parameters/todoId"
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Empty"
+        404:
+          $ref: "#/components/responses/NotFound"
+
+tags:
+  - name: Todos
+
+components:
+  parameters:
+    todoId:
+      name: id
+      in: path
+      description: Todo ID
+      required: true
+      schema:
+        type: integer
+        format: int32
+        example: 1
+
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Empty"
+
+  schemas:
+    Empty:
+      type: object
+    Todo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Todo ID
+          format: int32
+          example: 1
+        title:
+          type: string
+          description: Todo title
+          example: Buy milk
+        completed:
+          type: boolean
+          description: Todo status
+          example: false
+      required:
+        - id
