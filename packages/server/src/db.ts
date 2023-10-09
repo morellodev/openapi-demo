@@ -1,12 +1,18 @@
-import { faker } from "@faker-js/faker";
+import { boolean } from "@app/core/random";
 
-const TODOS_COUNT = 5;
+const INITIAL_TODOS = [
+  "Buy milk",
+  "Learn OpenAPI",
+  "Learn Orval",
+  "Walk the dog",
+  "Go to the gym",
+];
 
-const todos = Array.from({ length: TODOS_COUNT }, (_, i) => {
+const todos = INITIAL_TODOS.map((title, i) => {
   return {
     id: i + 1,
-    title: faker.lorem.sentence(),
-    completed: faker.datatype.boolean(),
+    title,
+    completed: boolean(),
   };
 });
 

@@ -1,6 +1,6 @@
+import { integer } from "@app/core/random";
 import { Todo } from "@app/openapi/todos";
 import { mocked, mockedArray } from "../../core";
-import { getRandomInt } from "../../utils";
 
 export const todo = mocked<Todo>({
   id: 1,
@@ -8,4 +8,4 @@ export const todo = mocked<Todo>({
   completed: false,
 });
 
-export const getTodos200 = mockedArray(() => todo({ id: getRandomInt() }));
+export const getTodos200 = mockedArray(() => todo({ id: integer() }));
