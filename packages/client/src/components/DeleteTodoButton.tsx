@@ -22,10 +22,11 @@ export const DeleteTodoButton: React.FC<{ todoId: Todo["id"] }> = ({
   return (
     <button
       aria-disabled={deleteTodo.isLoading}
+      aria-label="Delete"
       onClick={handleClick}
-      className="px-1 text-sm font-medium text-red-600 bg-white border border-red-600 rounded select-none hover:bg-red-50 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-red-500/50"
+      className="px-2 font-medium text-gray-400 rounded select-none group-hover:text-gray-500 hover:text-gray-600 hover:bg-gray-100 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-gray-500/50"
     >
-      Delete
+      &times;
     </button>
   );
 };
