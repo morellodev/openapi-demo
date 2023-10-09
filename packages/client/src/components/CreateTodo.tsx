@@ -15,6 +15,8 @@ export const CreateTodo: React.FC = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
+    if (createTodo.isLoading) return;
+
     const form = e.currentTarget;
     const formData = new FormData(form);
     const todoTitle = formData.get("todoText")?.toString().trim();
@@ -48,7 +50,8 @@ export const CreateTodo: React.FC = () => {
         />
         <button
           type="submit"
-          className="absolute inset-0 left-auto px-4 font-semibold text-white bg-blue-600 border border-blue-600 rounded-tr rounded-br hover:bg-blue-500"
+          aria-disabled={createTodo.isLoading}
+          className="absolute inset-0 left-auto px-4 font-semibold text-white bg-blue-600 rounded-tr rounded-br hover:bg-blue-500 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-blue-500/50"
         >
           Add
         </button>
