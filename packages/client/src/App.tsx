@@ -1,5 +1,6 @@
 import { CreateTodo } from "./components/CreateTodo";
 import { Todos } from "./components/Todos";
+import { TodosCount } from "./components/TodosCount";
 import "./index.css";
 
 export const App: React.FC = () => {
@@ -9,6 +10,7 @@ export const App: React.FC = () => {
       <div className="space-y-4">
         <CreateTodo />
         <Todos />
+        <TodosCount />
       </div>
     </main>
   );

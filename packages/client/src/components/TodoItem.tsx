@@ -1,5 +1,6 @@
 import { Todo, getGetTodosQueryKey, useUpdateTodo } from "@app/openapi/todos";
 import { useQueryClient } from "@tanstack/react-query";
+import { getTodoHtmlId } from "../utils/todos";
 import { DeleteTodoButton } from "./DeleteTodoButton";
 
 export const TodoItem: React.FC<{ todo: Todo }> = ({ todo }) => {
@@ -25,14 +26,14 @@ export const TodoItem: React.FC<{ todo: Todo }> = ({ todo }) => {
   return (
     <div className="inline-flex items-center w-full gap-2 px-2 py-1 rounded hover:bg-gray-50 group">
       <input
-        id={`todo-${todo.id}`}
+        id={getTodoHtmlId(todo)}
         type="checkbox"
         className="rounded peer"
         checked={todo.completed}
         onChange={handleChange}
       />
       <label
-        htmlFor={`todo-${todo.id}`}
+        htmlFor={getTodoHtmlId(todo)}
         className="cursor-pointer select-none peer-checked:line-through peer-checked:text-gray-500 grow"
       >
         {todo.title}
