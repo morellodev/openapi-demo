@@ -46,12 +46,12 @@ export const CreateTodo: React.FC = () => {
           name="todoText"
           required
           placeholder="I need to..."
-          className="w-full rounded"
+          className="w-full border-gray-800 rounded peer"
         />
         <button
           type="submit"
           aria-disabled={createTodo.isLoading}
-          className="absolute inset-0 left-auto px-4 font-semibold text-white bg-blue-600 rounded-tr rounded-br hover:bg-blue-500 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-blue-500/50"
+          className="absolute inset-0 left-auto px-4 font-semibold text-white bg-gray-800 rounded-tr rounded-br hover:bg-gray-700 peer-focus:bg-blue-600 peer-focus:hover:bg-blue-500 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-gray-500/50"
         >
           Add
         </button>
