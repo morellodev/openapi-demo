@@ -7,7 +7,9 @@ export const CreateTodo: React.FC = () => {
   const createTodo = useCreateTodo({
     mutation: {
       onSuccess: () => {
-        queryClient.invalidateQueries(getGetTodosQueryKey());
+        queryClient.invalidateQueries({
+          queryKey: getGetTodosQueryKey(),
+        });
       },
     },
   });
@@ -15,7 +17,7 @@ export const CreateTodo: React.FC = () => {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
-    if (createTodo.isLoading) return;
+    if (createTodo.isPending) return;
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -50,7 +52,7 @@ export const CreateTodo: React.FC = () => {
         />
         <button
           type="submit"
-          aria-disabled={createTodo.isLoading}
+          aria-disabled={createTodo.isPending}
           className="absolute inset-0 left-auto px-4 font-semibold text-white bg-gray-800 rounded-tr rounded-br hover:bg-gray-700 peer-focus:bg-blue-600 peer-focus:hover:bg-blue-500 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-gray-500/50"
         >
           Add

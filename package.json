@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgMagenta.bold\" \"pnpm --filter @app/server dev\" \"pnpm --filter @app/client dev\"",
-    "build": "pnpm --filter @app/client build",
+    "build": "pnpm -r build",
     "postinstall": "pnpm --filter @app/openapi build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck"

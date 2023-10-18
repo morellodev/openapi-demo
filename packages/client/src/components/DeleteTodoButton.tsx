@@ -9,19 +9,21 @@ export const DeleteTodoButton: React.FC<{ todoId: Todo["id"] }> = ({
   const deleteTodo = useDeleteTodo({
     mutation: {
       onSuccess: () => {
-        queryClient.invalidateQueries(getGetTodosQueryKey());
+        queryClient.invalidateQueries({
+          queryKey: getGetTodosQueryKey(),
+        });
       },
     },
   });
 
   const handleClick = () => {
-    if (deleteTodo.isLoading) return;
+    if (deleteTodo.isPending) return;
     deleteTodo.mutate({ id: todoId });
   };
 
   return (
     <button
-      aria-disabled={deleteTodo.isLoading}
+      aria-disabled={deleteTodo.isPending}
       aria-label="Delete"
       onClick={handleClick}
       className="px-2 font-mono font-medium text-gray-400 rounded select-none group-hover:text-gray-500 hover:text-gray-600 hover:bg-gray-100 aria-disabled:opacity-50 aria-disabled:cursor-not-allowed focus:outline-none focus:ring focus:ring-gray-500/50"

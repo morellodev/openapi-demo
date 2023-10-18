@@ -9,7 +9,7 @@ export const Todos: React.FC = () => {
   });
 
   return match(todos)
-    .with({ status: "loading" }, () => <p>Loading...</p>)
+    .with({ status: "pending" }, () => <p>Loading...</p>)
     .with({ status: "error" }, ({ refetch }) => (
       <button onClick={() => refetch()}>Retry</button>
     ))

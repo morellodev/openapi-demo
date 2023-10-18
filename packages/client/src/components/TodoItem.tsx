@@ -9,7 +9,9 @@ export const TodoItem: React.FC<{ todo: Todo }> = ({ todo }) => {
   const updateTodo = useUpdateTodo({
     mutation: {
       onSuccess: () => {
-        queryClient.invalidateQueries(getGetTodosQueryKey());
+        queryClient.invalidateQueries({
+          queryKey: getGetTodosQueryKey(),
+        });
       },
     },
   });
