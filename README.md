@@ -23,6 +23,6 @@ To enable mocking in development, uncomment the following lines in [@app/client/
 ```ts
 if (import.meta.env.DEV) {
   const { worker } = await import("@app/mocks/browser");
-  worker.start();
+  await worker.start();
 }
 ```

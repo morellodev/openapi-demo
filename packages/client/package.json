@@ -12,7 +12,7 @@
   "dependencies": {
     "@app/mocks": "workspace:^",
     "@app/openapi": "workspace:^",
-    "@tanstack/react-query": "^5.0.0",
+    "@tanstack/react-query": "^5.0.5",
     "framer-motion": "^10.16.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.6",
-    "@types/react": "^18.2.29",
-    "@types/react-dom": "^18.2.13",
+    "@types/react": "^18.2.31",
+    "@types/react-dom": "^18.2.14",
     "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.16",
     "eslint-plugin-jsx-a11y": "^6.7.1",

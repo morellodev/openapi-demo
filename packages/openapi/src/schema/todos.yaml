@@ -135,9 +135,9 @@ components:
       description: Todo ID
       required: true
       schema:
-        type: integer
-        format: int32
-        example: 1
+        type: string
+        format: uuid
+        example: cfcf5274-99a1-400f-a5f2-9d8e8c3a2658
     sortTodosBy:
       name: _sort
       in: query
@@ -149,6 +149,8 @@ components:
               - id
               - title
               - completed
+              - createdAt
+              - updatedAt
           - type: array
             items:
               type: string
@@ -156,6 +158,8 @@ components:
                 - id
                 - title
                 - completed
+                - createdAt
+                - updatedAt
     sortDirection:
       name: _order
       in: query
@@ -190,10 +194,10 @@ components:
       type: object
       properties:
         id:
-          type: integer
+          type: string
+          format: uuid
           description: Todo ID
-          format: int32
-          example: 1
+          example: cfcf5274-99a1-400f-a5f2-9d8e8c3a2658
         title:
           type: string
           description: Todo title
@@ -202,5 +206,17 @@ components:
           type: boolean
           description: Todo status
           example: false
+        createdAt:
+          type: string
+          format: date-time
+          description: Todo creation date
+          example: 2020-01-01T00:00:00.000Z
+        updatedAt:
+          type: string
+          format: date-time
+          description: Todo update date
+          example: 2020-01-01T00:00:00.000Z
       required:
         - id
+        - createdAt
+        - updatedAt

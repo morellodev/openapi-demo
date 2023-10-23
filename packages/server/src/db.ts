@@ -1,4 +1,4 @@
-import { boolean } from "@app/core/random";
+import { boolean, uuid } from "@app/core/random";
 
 const INITIAL_TODOS = [
   "Buy milk",
@@ -8,11 +8,13 @@ const INITIAL_TODOS = [
   "Go to the gym",
 ];
 
-const todos = INITIAL_TODOS.map((title, i) => {
+const todos = INITIAL_TODOS.map((title) => {
   return {
-    id: i + 1,
+    id: uuid(),
     title,
     completed: boolean(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   };
 });
 

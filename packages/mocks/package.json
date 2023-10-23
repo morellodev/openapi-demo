@@ -12,6 +12,6 @@
   "devDependencies": {
     "@app/core": "workspace:^",
     "@app/openapi": "workspace:^",
-    "msw": "^1.3.2"
+    "msw": "^2.0.0"
   }
 }

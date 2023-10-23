@@ -4,7 +4,7 @@ import { TodoList } from "./TodoList";
 
 export const Todos: React.FC = () => {
   const todos = useGetTodos({
-    _sort: ["completed", "id"],
+    _sort: ["completed", "createdAt"],
     _order: ["asc", "desc"],
   });
 
