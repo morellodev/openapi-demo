@@ -1,4 +1,5 @@
 import { boolean, uuid } from "@app/core/random";
+import { Todo } from "@app/openapi/todos";
 
 const INITIAL_TODOS = [
   "Buy milk",
@@ -14,8 +15,7 @@ const todos = INITIAL_TODOS.map((title) => {
     title,
     completed: boolean(),
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  };
+  } satisfies Todo;
 });
 
 export const db = {

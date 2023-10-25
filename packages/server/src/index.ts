@@ -16,11 +16,6 @@ server.use((req, res, next) => {
   if (req.method === "POST") {
     req.body.id = uuid();
     req.body.createdAt = requestTime;
-    req.body.updatedAt = requestTime;
-  }
-
-  if (req.method === "PATCH") {
-    req.body.updatedAt = requestTime;
   }
 
   next();

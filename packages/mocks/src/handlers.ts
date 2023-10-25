@@ -4,5 +4,11 @@ import { getFullUrl } from "./utils";
 
 export const handlers = [
   http.get(getFullUrl("/todos"), () => HttpResponse.json(getTodos200())),
-  http.get(getFullUrl("/todos/:id"), () => HttpResponse.json(todo())),
+  http.get(getFullUrl("/todos/:id"), ({ params }) =>
+    HttpResponse.json(
+      todo({
+        id: String(params.id),
+      })
+    )
+  ),
 ];

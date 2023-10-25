@@ -11,7 +11,7 @@ export const Todos: React.FC = () => {
   return match(todos)
     .with({ status: "pending" }, () => <p>Loading...</p>)
     .with({ status: "error" }, ({ refetch }) => (
-      <button onClick={() => refetch()}>Retry</button>
+      <button onClick={() => void refetch()}>Retry</button>
     ))
     .with({ status: "success" }, ({ data }) => <TodoList todos={data} />)
     .exhaustive();

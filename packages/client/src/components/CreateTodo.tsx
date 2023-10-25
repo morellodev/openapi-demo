@@ -6,8 +6,8 @@ export const CreateTodo: React.FC = () => {
 
   const createTodo = useCreateTodo({
     mutation: {
-      onSuccess: () => {
-        queryClient.invalidateQueries({
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
           queryKey: getGetTodosQueryKey(),
         });
       },

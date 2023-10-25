@@ -7,7 +7,6 @@ export const todo = mocked<Todo>({
   title: "Buy milk",
   completed: false,
   createdAt: "2023-01-01T00:00:00.000Z",
-  updatedAt: "2023-01-01T01:00:00.000Z",
 });
 
 export const getTodos200 = mockedArray(() =>
@@ -16,6 +15,5 @@ export const getTodos200 = mockedArray(() =>
     title: "Buy milk",
     completed: boolean(),
     createdAt: date().toISOString(),
-    updatedAt: date().toISOString(),
   })
 );

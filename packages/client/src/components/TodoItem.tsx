@@ -8,8 +8,8 @@ export const TodoItem: React.FC<{ todo: Todo }> = ({ todo }) => {
 
   const updateTodo = useUpdateTodo({
     mutation: {
-      onSuccess: () => {
-        queryClient.invalidateQueries({
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
           queryKey: getGetTodosQueryKey(),
         });
       },

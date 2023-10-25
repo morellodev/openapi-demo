@@ -150,7 +150,6 @@ components:
               - title
               - completed
               - createdAt
-              - updatedAt
           - type: array
             items:
               type: string
@@ -159,7 +158,6 @@ components:
                 - title
                 - completed
                 - createdAt
-                - updatedAt
     sortDirection:
       name: _order
       in: query
@@ -211,12 +209,6 @@ components:
           format: date-time
           description: Todo creation date
           example: 2020-01-01T00:00:00.000Z
-        updatedAt:
-          type: string
-          format: date-time
-          description: Todo update date
-          example: 2020-01-01T00:00:00.000Z
       required:
         - id
         - createdAt
-        - updatedAt

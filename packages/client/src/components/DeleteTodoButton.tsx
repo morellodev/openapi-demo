@@ -8,8 +8,8 @@ export const DeleteTodoButton: React.FC<{ todoId: Todo["id"] }> = ({
 
   const deleteTodo = useDeleteTodo({
     mutation: {
-      onSuccess: () => {
-        queryClient.invalidateQueries({
+      onSuccess: async () => {
+        await queryClient.invalidateQueries({
           queryKey: getGetTodosQueryKey(),
         });
       },

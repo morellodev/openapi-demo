@@ -3,7 +3,11 @@ import { match } from "ts-pattern";
 import { getCompletedTodosCount } from "../utils/todos";
 
 export const TodosCount: React.FC = () => {
-  const todos = useGetTodos();
+  // We should use same query params as in Todos.tsx to dedupe requests
+  const todos = useGetTodos({
+    _sort: ["completed", "createdAt"],
+    _order: ["asc", "desc"],
+  });
 
   return match(todos)
     .with({ status: "success" }, ({ data }) => (
